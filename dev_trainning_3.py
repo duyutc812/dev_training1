@@ -1,13 +1,12 @@
 import requests
 
 
-api_version = '2020-10'
 API_KEY = '30505da054ac8810c3c22bd360f9f57e'
 PASSWORD = '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'
 shop_url = 'https://%s:%s@duyutc812.myshopify.com/admin/api/2020-10/customers.json' % (API_KEY, PASSWORD)
 response = requests.get(shop_url)
 data_customer = response.json()["customers"]
-print(data_customer)
+# print(data_customer)
 col_data = [customer_key for customer_key in data_customer[0].keys() if customer_key not in ['addresses', 'default_address']]
 file = open('customer_write.csv', 'w')
 file.write(','.join(col_data))
